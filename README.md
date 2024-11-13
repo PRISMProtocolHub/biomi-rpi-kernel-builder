@@ -1,2 +1,2 @@
-# biomi-rpi-kernel-builder
-Builds the Raspberry kernels
+# Biomi Docker Kernel Builder
+Builds the Raspberry kernel to be used as base for the biomi emulator or the image flashing
