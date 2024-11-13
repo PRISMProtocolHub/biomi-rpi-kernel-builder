@@ -25,12 +25,14 @@ RUN git clone --single-branch --branch $KERNEL_BRANCH $KERNEL_GIT $BUILD_DIR/lin
 ARG ARCH=arm64
 ARG CROSS_COMPILE=aarch64-linux-gnu-
 
+WORKDIR $BUILD_DIR
+
 # Compile default VM guest image
 RUN make -C $BUILD_DIR/linux defconfig kvm_guest.config \
  && make -C $BUILD_DIR/linux -j$(nproc) Image
 
 # Customize guest image
-COPY src/conf/custom.conf $BUILD_DIR/linux/kernel/configs/custom.config
+COPY config/kernel-custom.conf $BUILD_DIR/linux/kernel/configs/custom.config
 RUN make -C $BUILD_DIR/linux custom.config \
  && make -C $BUILD_DIR/linux -j$(nproc) Image \
  && mv $BUILD_DIR/linux/arch/arm64/boot/Image $BUILD_DIR/kernel.img \
