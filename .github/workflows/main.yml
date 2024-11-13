@@ -43,5 +43,5 @@ jobs:
           build-args: |
             KERNEL_BRANCH=${{ inputs.kernel_version }}
           tags: |
-            ghcr.io/${{ github.repository_owner }}/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
-            ghcr.io/${{ github.repository_owner }}/biomi-rpi-kernel-builder:${{ github.sha }}
+            ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
+            ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
