@@ -43,7 +43,7 @@ jobs:
           build-args: |
             KERNEL_BRANCH=${{ inputs.kernel_version }}
           platforms: |
-            linux/amd6
+            linux/amd64
             linux/arm64
           tags: |
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
