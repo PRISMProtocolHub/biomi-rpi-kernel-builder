@@ -48,3 +48,18 @@ jobs:
           tags: |
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
+
+      - name: Create container from image
+        run: docker create --name biomi-rpi-kernel-builder-container biomi-rpi-kernel-builder
+
+      - name: Copy artifact from container
+        run: docker cp biomi-rpi-kernel-builder-container:/build/kernel.img /tmp/kernel.img
+
+      - name: Remove container
+        run: docker rm biomi-rpi-kernel-builder-container
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: kernel.img
+          path: /tmp/kernel.img
