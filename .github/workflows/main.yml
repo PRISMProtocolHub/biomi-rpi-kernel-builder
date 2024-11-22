@@ -59,7 +59,7 @@ jobs:
         run: docker rm biomi-rpi-kernel-builder-container
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: kernel.img
           path: /tmp/kernel.img
