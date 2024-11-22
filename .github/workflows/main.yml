@@ -50,7 +50,7 @@ jobs:
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
 
       - name: Create container from image
-        run: docker create --name biomi-rpi-kernel-builder-container biomi-rpi-kernel-builder
+        run: docker create --name biomi-rpi-kernel-builder-container ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
 
       - name: Copy artifact from container
         run: docker cp biomi-rpi-kernel-builder-container:/build/kernel.img /tmp/kernel.img
