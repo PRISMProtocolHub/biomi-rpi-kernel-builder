@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 jobs:
