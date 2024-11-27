@@ -50,4 +50,5 @@ RUN cd linux && \
 
 # Final stage with minimal image
 FROM scratch
+ARG BUILD_DIR
 COPY --from=builder /build/linux/arch/arm64/boot/Image $BUILD_DIR/kernel.img
