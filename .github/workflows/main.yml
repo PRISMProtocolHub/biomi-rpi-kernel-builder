@@ -49,19 +49,16 @@ jobs:
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
 
-      - name: Create container from image
-        run: docker create --name biomi-rpi-kernel-builder-container ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
-
-      - name: Copy artifact from container
-        run: docker cp biomi-rpi-kernel-builder-container:/build/kernel.img /tmp/kernel.img
-
-      - name: Remove container
-        run: docker rm biomi-rpi-kernel-builder-container
+      - name: Extract Kernel Image
+        run: |
+          docker create --name kernel-builder ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }} /bin/bash
+          docker cp kernel-builder:/build/kernel.img kernel.img
+          docker rm kernel-builder
 
       - name: Create Release and Upload Artifact
         uses: ncipollo/release-action@v1
         with:
-          artifacts: /tmp/kernel.img
+          artifacts: kernel.img
           tag: ${{ inputs.kernel_version }}
           name: Release Kernel ${{ inputs.kernel_version }}
           token: ${{ secrets.GITHUB_TOKEN }}
