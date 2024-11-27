@@ -15,12 +15,16 @@ ARG KERNEL_GIT=https://github.com/raspberrypi/linux.git
 RUN apt-get update && apt-get install -y --no-install-recommends \
     bc \
     bison \
+    build-essential \
     crossbuild-essential-arm64 \
     flex \
     git \
     libssl-dev \
     make \
+    gcc \
+    g++ \
     gcc-aarch64-linux-gnu \
+    g++-aarch64-linux-gnu \
     binutils-aarch64-linux-gnu \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
