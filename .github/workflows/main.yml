@@ -46,11 +46,10 @@ jobs:
             linux/arm64
           tags: |
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
-            ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
 
       - name: Extract Kernel Image
         run: |
-          docker create --name kernel-builder ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }} /bin/bash
+          docker create --name kernel-builder ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }} /bin/bash
           docker cp kernel-builder:/build/kernel.img kernel.img
           docker rm kernel-builder
 
