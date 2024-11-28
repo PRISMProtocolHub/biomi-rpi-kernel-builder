@@ -53,6 +53,7 @@ RUN cd linux && \
     make ARCH=$ARCH CROSS_COMPILE=$CROSS_COMPILE -j$(nproc) Image
 
 # Final stage with minimal image
-FROM scratch
-ARG BUILD_DIR
-COPY --from=builder /build/linux/arch/arm64/boot/Image $BUILD_DIR/kernel.img
+FROM debian:bookworm-slim
+ARG BUILD_DIR=/build
+WORKDIR $BUILD_DIR
+COPY --from=builder $BUILD_DIR/linux/arch/arm64/boot/Image $BUILD_DIR/kernel.img
