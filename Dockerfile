@@ -23,8 +23,8 @@ RUN apt-get update && apt install -y \
 RUN git clone --single-branch --branch $KERNEL_BRANCH $KERNEL_GIT $BUILD_DIR/linux/
 
 # Kernel compile options
-ENV ARCH=arm64
-ENV CROSS_COMPILE=aarch64-linux-gnu-
+#ENV ARCH=arm64
+#ENV CROSS_COMPILE=aarch64-linux-gnu-
 
 WORKDIR $BUILD_DIR
 

@@ -42,6 +42,8 @@ jobs:
           push: true
           build-args: |
             KERNEL_BRANCH=${{ inputs.kernel_version }}
+          platforms: |
+            linux/arm64
           tags: |
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
             ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ github.sha }}
