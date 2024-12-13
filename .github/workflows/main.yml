@@ -61,7 +61,7 @@ jobs:
       - name: Create Release and Upload Artifact
         uses: ncipollo/release-action@v1
         with:
-          artifacts: kernel.img
+          artifacts: "kernel.img,modules.tar.gz"
           tag: ${{ inputs.kernel_version }}
           name: Release Kernel ${{ inputs.kernel_version }}
           token: ${{ secrets.GITHUB_TOKEN }}
