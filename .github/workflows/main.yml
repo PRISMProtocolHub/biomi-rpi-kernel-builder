@@ -20,10 +20,10 @@ jobs:
       labels: arm64-runner
     timeout-minutes: 600
     steps:
-      - name: Free up disk space on GitHub runner
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
+#      - name: Free up disk space on GitHub runner
+#        uses: jlumbroso/free-disk-space@main
+#        with:
+#          tool-cache: false
 
       - name: Checkout
         uses: actions/checkout@v4
