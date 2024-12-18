@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: arm64-runner
     timeout-minutes: 600
     steps:
       - name: Free up disk space on GitHub runner
