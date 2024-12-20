@@ -39,5 +39,8 @@ RUN make -C linux defconfig kvm_guest.config \
     && cat linux/kernel/configs/custom.config >> linux/.config \
     && make -C linux olddefconfig \
     && make -C linux -j$(nproc) Image \
+    && make -C linux -j$(nproc) modules \
+    && make -C linux modules_install INSTALL_MOD_PATH=modules_output \
+    && tar -czf modules.tar.gz -C modules_output/lib/modules . \
     && mv linux/arch/arm64/boot/Image kernel.img \
     && rm -rf linux
