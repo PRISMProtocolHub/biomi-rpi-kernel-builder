@@ -60,6 +60,7 @@ jobs:
           docker pull --platform linux/arm64 ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }}
           docker create --platform linux/arm64 --name kernel-builder ghcr.io/prismprotocolhub/biomi-rpi-kernel-builder:${{ inputs.kernel_version }} /bin/bash
           docker cp kernel-builder:/build/kernel.img kernel.img
+          docker cp kernel-builder:/build/modules.tar.gz modules.tar.gz
           docker rm kernel-builder
 
       - name: Create Release and Upload Artifact
